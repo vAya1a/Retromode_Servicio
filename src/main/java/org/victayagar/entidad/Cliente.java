@@ -8,7 +8,7 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(length = 100)
-    private String nombres;
+    private String nombre;
     @Column(length = 100)
     private String primerApellido;
     @Column(length = 100)
@@ -19,8 +19,6 @@ public class Cliente {
     private String numDoc;
     @Column(length = 500)
     private String direccionEnvio;
-    @Column(length = 100)
-    private String calle;
     @Column(length = 100)
     private String ciudad;
     @Column(length = 100)
@@ -38,12 +36,12 @@ public class Cliente {
         this.id = id;
     }
 
-    public String getNombres() {
-        return nombres;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setNombre(String nombres) {
+        this.nombre = nombres;
     }
 
     public String getTipoDoc() {
@@ -68,14 +66,6 @@ public class Cliente {
 
     public void setDireccionEnvio(String direccionEnvio) {
         this.direccionEnvio = direccionEnvio;
-    }
-
-    public String getCalle() {
-        return calle;
-    }
-
-    public void setCalle(String calle) {
-        this.calle = calle;
     }
 
     public String getCiudad() {
@@ -127,7 +117,7 @@ public class Cliente {
     }
 
     public String getNombreCompletoCiente() {
-        return this.nombres != null && this.primerApellido != null && this.segundoApellido != null ?
-                this.nombres + " " + this.primerApellido + " " + this.segundoApellido : "-----";
+        return this.nombre != null && this.primerApellido != null && this.segundoApellido != null ?
+                this.nombre + " " + this.primerApellido + " " + this.segundoApellido : "-----";
     }
 }
