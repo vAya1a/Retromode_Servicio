@@ -9,18 +9,19 @@ import org.victayagar.servicio.DocumentoAlmacenadoService;
 import org.victayagar.utilidades.GenericResponse;
 
 
+
 @RestController
 @RequestMapping("api/documento-almacenado")
 public class DocumentoAlmacenadoControlador {
-    private DocumentoAlmacenadoService servicio;
+    private DocumentoAlmacenadoService service;
 
-    public DocumentoAlmacenadoControlador(DocumentoAlmacenadoService servicio) {
-        this.servicio = servicio;
+    public DocumentoAlmacenadoControlador(DocumentoAlmacenadoService service) {
+        this.service = service;
     }
 
     @GetMapping
     public GenericResponse list() {
-        return servicio.list();
+        return service.list();
     }
 
     @GetMapping("/{id}")
@@ -30,12 +31,12 @@ public class DocumentoAlmacenadoControlador {
 
     @GetMapping("/download/{fileName}")
     public ResponseEntity<Resource> download(@PathVariable String fileName, HttpServletRequest request) {
-        return servicio.downloadByFileName(fileName, request);
+        return service.downloadByFileName(fileName, request);
     }
 
     @PostMapping
     public GenericResponse save(@ModelAttribute DocumentoAlmacenado obj) {
-        return servicio.save(obj);
+        return service.save(obj);
     }
 
     public GenericResponse update(Long aLong, DocumentoAlmacenado obj) {

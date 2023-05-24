@@ -23,7 +23,7 @@ public class UsuarioService {
     public GenericResponse<Usuario> login(String email, String contra){
         Optional<Usuario> optU = this.repositorio.login(email, contra);
         if(optU.isPresent()){
-            return new GenericResponse<Usuario>(TIPO_AUTH, RPTA_OK, "Haz iniciado sesión correctamente", optU.get());
+            return new GenericResponse<Usuario>(TIPO_AUTH, RPTA_OK, "Has iniciado sesión correctamente", optU.get());
         }else{
             return new GenericResponse<Usuario>(TIPO_AUTH, RPTA_WARNING, "Lo sentimos, ese usuario no existe", new Usuario());
         }

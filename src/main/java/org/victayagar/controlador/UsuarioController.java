@@ -1,5 +1,6 @@
 package org.victayagar.controlador;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.victayagar.entidad.Usuario;
@@ -14,18 +15,21 @@ public class UsuarioController {
     public UsuarioController(UsuarioService service) {
         this.service = service;
     }
-    @PostMapping("/login")
-    public GenericResponse<Usuario> login(HttpServletRequest request){
+
+    @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
+    public GenericResponse<Usuario> login(HttpServletRequest request) {
         String email = request.getParameter("email");
         String contra = request.getParameter("pass");
         return this.service.login(email, contra);
     }
-    @PostMapping
-    public GenericResponse save(@RequestBody Usuario u){
+
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public GenericResponse save(@RequestBody Usuario u) {
         return this.service.guardarUsuario(u);
     }
-    @PutMapping("/{id}")
-    public GenericResponse update(@PathVariable int id, @RequestBody Usuario u){
+
+    @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public GenericResponse update(@PathVariable int id, @RequestBody Usuario u) {
         return this.service.guardarUsuario(u);
     }
 }
