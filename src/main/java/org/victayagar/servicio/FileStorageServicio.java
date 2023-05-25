@@ -20,10 +20,10 @@ import java.util.UUID;
 
 
 @Service
-public class FileStorageService {
+public class FileStorageServicio {
     private FileStorageProperties fileStorageProperties;
 
-    public FileStorageService(FileStorageProperties fileStorageProperties) {
+    public FileStorageServicio(FileStorageProperties fileStorageProperties) {
         this.fileStorageProperties = fileStorageProperties;
     }
 

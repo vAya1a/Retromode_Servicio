@@ -21,11 +21,11 @@ import static org.victayagar.utilidades.Global.*;
 
 @Service
 @Transactional
-public class DocumentoAlmacenadoService {
+public class DocumentoAlmacenadoServicio {
     private DocumentoAlmacenadoRepositorio repo;
-    private FileStorageService storageService;
+    private FileStorageServicio storageService;
 
-    public DocumentoAlmacenadoService(DocumentoAlmacenadoRepositorio repo, FileStorageService storageService) {
+    public DocumentoAlmacenadoServicio(DocumentoAlmacenadoRepositorio repo, FileStorageServicio storageService) {
         this.repo = repo;
         this.storageService = storageService;
     }

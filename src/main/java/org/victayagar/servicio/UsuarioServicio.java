@@ -13,10 +13,10 @@ import static org.victayagar.utilidades.Global.*;
 
 @Service
 @Transactional
-public class UsuarioService {
+public class UsuarioServicio {
     private final UsuarioRepositorio repositorio;
 
-    public UsuarioService(UsuarioRepositorio repositorio) {
+    public UsuarioServicio(UsuarioRepositorio repositorio) {
         this.repositorio = repositorio;
     }
     //Método para iniciar sesión
@@ -33,9 +33,9 @@ public class UsuarioService {
         Optional<Usuario> optU = this.repositorio.findById(u.getId());
         int idf = optU.isPresent() ? optU.get().getId() : 0;
         if(idf == 0){
-            return new GenericResponse(TIPO_DATA, RPTA_OK, "Usuario Registrado Correctamente", this.repositorio.save(u));
+            return new GenericResponse(TIPO_DATA, RPTA_OK, "El usuario se ha registrado correctamente", this.repositorio.save(u));
         }else{
-            return new GenericResponse(TIPO_DATA, RPTA_OK, "Datos del usuario actualizados", this.repositorio.save(u));
+            return new GenericResponse(TIPO_DATA, RPTA_OK, "Los datos del usuario han sido actualizados", this.repositorio.save(u));
         }
     }
 }
