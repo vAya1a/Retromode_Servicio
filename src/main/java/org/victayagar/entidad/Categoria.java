@@ -10,9 +10,9 @@ public class Categoria {
     @Column(length = 100)
     private String nombre;
     @Column
- private boolean vigencia;
+    private boolean vigencia;
     @OneToOne
- private DocumentoAlmacenado foto;
+    private DocumentoAlmacenado foto;
 
     public int getId() {
         return id;

@@ -17,13 +17,12 @@ public class Producto {
     private int stock;
     @Column(length = 500)
     private String descripcionProducto;
-
-    @Column(length = 100)
-    private String marca;
     @OneToOne
     private Categoria categoria;
     @Column
     private boolean vigencia;
+    @Column
+    private boolean recomendado;
 
 
     public int getId() {
@@ -74,10 +73,6 @@ public class Producto {
         this.descripcionProducto = descripcionProducto;
     }
 
-    public String getMarca() { return marca; }
-
-    public void setMarca(String marca) { this.marca = marca; }
-
     public Categoria getCategoria() {
         return categoria;
     }
@@ -92,5 +87,12 @@ public class Producto {
 
     public void setVigencia(boolean vigencia) {
         this.vigencia = vigencia;
+    }
+    public boolean isRecomendado() {
+        return recomendado;
+    }
+
+    public void setRecomendado(boolean recomendado) {
+        this.recomendado = recomendado;
     }
 }

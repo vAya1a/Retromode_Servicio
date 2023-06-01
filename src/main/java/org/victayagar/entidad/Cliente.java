@@ -44,6 +44,22 @@ public class Cliente {
         this.nombre = nombres;
     }
 
+    public String getPrimerApellido() {
+        return primerApellido;
+    }
+
+    public void setPrimerApellido(String primerApellido) {
+        this.primerApellido = primerApellido;
+    }
+
+    public String getSegundoApellido() {
+        return segundoApellido;
+    }
+
+    public void setSegundoApellido(String segundoApellido) {
+        this.segundoApellido = segundoApellido;
+    }
+
     public String getTipoDoc() {
         return tipoDoc;
     }
@@ -92,22 +108,6 @@ public class Cliente {
         this.foto = foto;
     }
 
-    public String getPrimerApellido() {
-        return primerApellido;
-    }
-
-    public void setPrimerApellido(String primerApellido) {
-        this.primerApellido = primerApellido;
-    }
-
-    public String getSegundoApellido() {
-        return segundoApellido;
-    }
-
-    public void setSegundoApellido(String segundoApellido) {
-        this.segundoApellido = segundoApellido;
-    }
-
     public String getTelefono() {
         return telefono;
     }
@@ -116,7 +116,7 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getNombreCompletoCiente() {
+    public String getNombreCompletoCliente() {
         return this.nombre != null && this.primerApellido != null && this.segundoApellido != null ?
                 this.nombre + " " + this.primerApellido + " " + this.segundoApellido : "-----";
     }
