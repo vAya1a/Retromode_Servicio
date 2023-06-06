@@ -16,7 +16,7 @@ public class CategoriaControlador {
         this.servicio = servicio;
     }
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public GenericResponse listarCategoriasActivas(){
         return this.servicio.listarCategoriasActivas();
     }
