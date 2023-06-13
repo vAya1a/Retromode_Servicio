@@ -21,8 +21,6 @@ public class Pedido {
     private boolean anularPedido;
 
 
-
-
     public int getId() {
         return id;
     }

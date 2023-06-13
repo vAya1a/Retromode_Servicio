@@ -9,7 +9,7 @@ public class PedidoConDetallesDTO {
     private Pedido pedido;
     private Iterable<DetallePedido> detallePedido;
 
-    public PedidoConDetallesDTO(){
+    public PedidoConDetallesDTO() {
         this.pedido = new Pedido();
         this.detallePedido = new ArrayList<>();
     }

@@ -1,6 +1,5 @@
 package org.victayagar.controlador;
 
-import jakarta.annotation.Resource;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,25 +19,28 @@ public class PedidoControlador {
     public PedidoControlador(PedidoServicio servicio) {
         this.servicio = servicio;
     }
+
     //LISTAR PEDIDOS CON DETALLES
     @GetMapping(value = "/misPedidos/{idCli}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public GenericResponse<List<PedidoConDetallesDTO>> devolverMisComprasConDetalle(@PathVariable int idCli){
+    public GenericResponse<List<PedidoConDetallesDTO>> devolverMisComprasConDetalle(@PathVariable int idCli) {
         return this.servicio.devolverMisCompras(idCli);
     }
+
     //Guardar pedido
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public GenericResponse guardarPedido(@RequestBody GenerarPedidoDTO dto){
+    public GenericResponse guardarPedido(@RequestBody GenerarPedidoDTO dto) {
         return this.servicio.guardarPedido(dto);
     }
+
     //Anular pedido
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public GenericResponse anularPedido(@PathVariable int id){
+    public GenericResponse anularPedido(@PathVariable int id) {
         return this.servicio.anularPedido(id);
     }
 
     //Exportar PDF de orden
     @GetMapping(value = "exportInvoice", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ByteArrayResource> exportInvoice(@RequestParam int idCli, @RequestParam int idOrden){
+    public ResponseEntity<ByteArrayResource> exportInvoice(@RequestParam int idCli, @RequestParam int idOrden) {
         return this.servicio.exportInvoice(idCli, idOrden);
     }
 

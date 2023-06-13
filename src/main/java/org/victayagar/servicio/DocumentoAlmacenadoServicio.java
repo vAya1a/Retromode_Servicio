@@ -12,11 +12,11 @@ import org.victayagar.repositorio.DocumentoAlmacenadoRepositorio;
 import org.victayagar.utilidades.GenericResponse;
 
 import jakarta.servlet.http.HttpServletRequest;
+
 import java.io.IOException;
 import java.util.HashMap;
 
 import static org.victayagar.utilidades.Global.*;
-
 
 
 @Service
@@ -51,7 +51,7 @@ public class DocumentoAlmacenadoServicio {
         obj.setFileName(fileName);
         obj.setExtension(extension);
 
-        return new GenericResponse(TIPO_DATA, RPTA_OK,OPERACION_CORRECTA,repo.save(obj));
+        return new GenericResponse(TIPO_DATA, RPTA_OK, OPERACION_CORRECTA, repo.save(obj));
     }
 
     public ResponseEntity<Resource> download(String completefileName, HttpServletRequest request) {

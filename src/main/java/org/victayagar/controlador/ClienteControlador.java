@@ -17,12 +17,12 @@ public class ClienteControlador {
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public GenericResponse save(@Valid @RequestBody Cliente c){
+    public GenericResponse save(@Valid @RequestBody Cliente c) {
         return this.servicio.save(c);
     }
 
-    @PutMapping(value= "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public GenericResponse update(@PathVariable int id, @Valid @RequestBody Cliente c){
+    @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public GenericResponse update(@PathVariable int id, @Valid @RequestBody Cliente c) {
         c.setId(id);
         return this.servicio.save(c);
     }

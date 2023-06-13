@@ -18,11 +18,12 @@ public class ProductoControlador {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public GenericResponse listarProductosRecomendados(){
+    public GenericResponse listarProductosRecomendados() {
         return this.servicio.listarProductosRecomendados();
     }
+
     @GetMapping(value = "/{idC}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public GenericResponse listarProductosPorCategoria(@PathVariable int idC){
+    public GenericResponse listarProductosPorCategoria(@PathVariable int idC) {
         return this.servicio.listarProductosPorCategoria(idC);
     }
 }

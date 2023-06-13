@@ -15,7 +15,8 @@ public class CategoriaServicio {
     public CategoriaServicio(CategoriaRepositorio repositorio) {
         this.repositorio = repositorio;
     }
-    public GenericResponse listarCategoriasActivas(){
+
+    public GenericResponse listarCategoriasActivas() {
         return new GenericResponse(TIPO_DATA, RPTA_OK, OPERACION_CORRECTA, this.repositorio.listarCategoriasActivas());
     }
 }

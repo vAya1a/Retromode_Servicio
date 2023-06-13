@@ -10,7 +10,6 @@ import org.victayagar.servicio.DocumentoAlmacenadoServicio;
 import org.victayagar.utilidades.GenericResponse;
 
 
-
 @RestController
 @RequestMapping("api/documento-almacenado")
 public class DocumentoAlmacenadoControlador {
@@ -25,12 +24,12 @@ public class DocumentoAlmacenadoControlador {
         return servicio.list();
     }
 
-    @GetMapping(value= "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public GenericResponse find(@PathVariable Long id) {
         return null;
     }
 
-    @GetMapping(value= "/download/{fileName}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/download/{fileName}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Resource> download(@PathVariable String fileName, HttpServletRequest request) {
         return servicio.downloadByFileName(fileName, request);
     }

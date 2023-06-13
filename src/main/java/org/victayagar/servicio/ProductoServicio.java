@@ -13,13 +13,14 @@ public class ProductoServicio {
     private final ProductoRepositorio repositorio;
 
     public ProductoServicio(ProductoRepositorio repositorio) {
-        this.repositorio =  repositorio;
+        this.repositorio = repositorio;
     }
-    public GenericResponse listarProductosRecomendados(){
+
+    public GenericResponse listarProductosRecomendados() {
         return new GenericResponse(TIPO_DATA, RPTA_OK, OPERACION_CORRECTA, this.repositorio.listarProductosRecomendados());
     }
 
-    public GenericResponse listarProductosPorCategoria(int idC){
+    public GenericResponse listarProductosPorCategoria(int idC) {
         return new GenericResponse(TIPO_DATA, RPTA_OK, OPERACION_CORRECTA, this.repositorio.listarProductosPorCategoria(idC));
     }
 }

@@ -88,6 +88,7 @@ public class Producto {
     public void setVigencia(boolean vigencia) {
         this.vigencia = vigencia;
     }
+
     public boolean isRecomendado() {
         return recomendado;
     }

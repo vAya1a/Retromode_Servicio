@@ -1,8 +1,7 @@
 package org.victayagar.servicio;
 
-import jakarta.annotation.Resource;
+
 import jakarta.transaction.Transactional;
-import jakarta.validation.constraints.NotNull;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
@@ -21,8 +20,6 @@ import org.victayagar.repositorio.DetallePedidoRepositorio;
 import org.victayagar.repositorio.PedidoRepositorio;
 import org.victayagar.repositorio.ProductoRepositorio;
 import org.victayagar.utilidades.GenericResponse;
-
-
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -115,7 +112,7 @@ public class PedidoServicio {
                         .build();
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentDisposition(contentDisposition);
-                return ResponseEntity.ok().contentLength((long)reporte.length)
+                return ResponseEntity.ok().contentLength((long) reporte.length)
                         .contentType(MediaType.APPLICATION_PDF)
                         .headers(headers).body(new ByteArrayResource(reporte));
             } catch (Exception e) {

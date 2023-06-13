@@ -13,8 +13,9 @@ public class DetallePedidoServicio {
     public DetallePedidoServicio(DetallePedidoRepositorio repositorio) {
         this.repositorio = repositorio;
     }
+
     //Metodo para guardar detalles del pedido
-    public void guardarDetalles(Iterable<DetallePedido> detalle){
+    public void guardarDetalles(Iterable<DetallePedido> detalle) {
         this.repositorio.saveAll(detalle);
     }
 }
