@@ -1,5 +1,12 @@
 package org.victayagar.utilidades;
 
+/*
+La clase GenericResponse es una respuesta genérica que se utiliza para
+enviar respuestas estandarizadas desde los servicios. Contiene campos
+como type (tipo de la respuesta), rpta (respuesta), message (mensaje de la respuesta)
+y body (cuerpo de la respuesta) para proporcionar información detallada sobre la respuesta.
+Permite enviar respuestas consistentes y estructuradas desde los servicios hacia los clientes.
+*/
 public class GenericResponse<T> {
     private String type;
     private int rpta;

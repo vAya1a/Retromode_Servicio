@@ -28,6 +28,26 @@ import java.util.*;
 
 import static org.victayagar.utilidades.Global.*;
 
+/*
+En esta clase, se utiliza la anotación @Service para indicar que es un componente de servicio gestionado por Spring.
+
+En el constructor se inyectan los repositorios y servicios necesarios.
+
+El método devolverMisCompras() devuelve una lista de pedidos con sus respectivos detalles
+para un cliente dado. Se realiza una consulta en el repositorio para obtener los pedidos y se
+construye la lista de DTO PedidoConDetallesDTO que contiene el pedido y sus detalles.
+
+El método guardarPedido() guarda un nuevo pedido en la base de datos. Se establece la fecha
+de compra, se guarda el pedido y se actualiza el stock de los productos correspondientes.
+
+El método anularPedido() anula un pedido existente. Se busca el pedido en la base de datos, se marca como anulado y se guarda.
+
+El método exportInvoice() exporta una factura en formato PDF para un cliente y un pedido dado.
+Se carga un archivo JasperReport que contiene la plantilla del informe, se establecen los parámetros
+necesarios y se genera el informe en formato PDF utilizando JasperReports. El informe resultante se
+devuelve como una respuesta de tipo ResponseEntity con el contenido del PDF.
+*/
+
 @Service
 @Transactional
 public class PedidoServicio {
@@ -43,7 +63,12 @@ public class PedidoServicio {
         this.pRepositorio = pRepositorio;
     }
 
-    //Metodo para devolver los pedidos con su respectivo detalle
+    /**
+     * Devuelve los pedidos con su respectivo detalle para un cliente dado.
+     *
+     * @param idCli ID del cliente.
+     * @return Respuesta genérica con la lista de pedidos y sus detalles.
+     */
     public GenericResponse<List<PedidoConDetallesDTO>> devolverMisCompras(int idCli) {
         final List<PedidoConDetallesDTO> dtos = new ArrayList<>();
         final Iterable<Pedido> pedidos = repositorio.devolverMisCompras(idCli);
@@ -53,7 +78,12 @@ public class PedidoServicio {
         return new GenericResponse(OPERACION_CORRECTA, RPTA_OK, "Petición encontrada", dtos);
     }
 
-    //Metodo para guardar el pedido
+    /**
+     * Guarda un pedido en la base de datos.
+     *
+     * @param dto DTO que contiene la información del pedido y sus detalles.
+     * @return Respuesta genérica con el resultado de la operación.
+     */
     public GenericResponse guardarPedido(GenerarPedidoDTO dto) {
         Date date = new Date();
         dto.getPedido().setFechaCompra(new java.sql.Date(date.getTime()));
@@ -70,7 +100,12 @@ public class PedidoServicio {
         return new GenericResponse(TIPO_DATA, RPTA_OK, OPERACION_CORRECTA, dto);
     }
 
-    //Metodo para anular el pedido
+    /**
+     * Anula un pedido.
+     *
+     * @param id ID del pedido a anular.
+     * @return Respuesta genérica con el resultado de la operación.
+     */
     public GenericResponse anularPedido(int id) {
         Pedido p = this.repositorio.findById(id).orElse(new Pedido());
         if (p.getId() != 0) {
@@ -82,7 +117,13 @@ public class PedidoServicio {
         }
     }
 
-
+    /**
+     * Exporta una factura en formato PDF para un cliente y un pedido dado.
+     *
+     * @param idCli   ID del cliente.
+     * @param idOrden ID del pedido.
+     * @return Respuesta de tipo ResponseEntity que contiene el archivo PDF.
+     */
     public ResponseEntity<ByteArrayResource> exportInvoice(int idCli, int idOrden) {
         Optional<Pedido> optPedido = this.repositorio.findByIdAndClienteId(idCli, idOrden);
         Double rpta = this.detallePedidoRepositorio.totalByIdCustomer(idCli, idOrden);
