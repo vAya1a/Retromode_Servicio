@@ -1,6 +1,9 @@
 package org.victayagar.controlador;
 
+import jakarta.annotation.Resource;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.victayagar.entidad.dto.GenerarPedidoDTO;
 import org.victayagar.entidad.dto.PedidoConDetallesDTO;
@@ -31,6 +34,12 @@ public class PedidoControlador {
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public GenericResponse anularPedido(@PathVariable int id){
         return this.servicio.anularPedido(id);
+    }
+
+    //Exportar PDF de orden
+    @GetMapping(value = "exportInvoice", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ByteArrayResource> exportInvoice(@RequestParam int idCli, @RequestParam int idOrden){
+        return this.servicio.exportInvoice(idCli, idOrden);
     }
 
 }
